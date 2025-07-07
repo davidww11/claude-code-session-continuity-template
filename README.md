@@ -24,7 +24,7 @@
 ### 方法1: 一键脚本 (推荐)
 ```bash
 # 在你的新项目根目录下运行
-curl -fsSL https://raw.githubusercontent.com/davidww11/claude-code-session-continuity-template/main/deploy.sh | bash
+curl -fsSL https://github.com/davidww11/claude-code-session-continuity-template/blob/master/deploy.sh | bash
 ```
 
 ### 方法2: 手动复制
