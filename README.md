@@ -24,14 +24,14 @@
 ### 方法1: 一键脚本 (推荐)
 ```bash
 # 在你的新项目根目录下运行
-curl -fsSL https://raw.githubusercontent.com/your-repo/claude-continuity-template/main/deploy.sh | bash
+curl -fsSL https://raw.githubusercontent.com/davidww11/claude-code-session-continuity-template/main/deploy.sh | bash
 ```
 
 ### 方法2: 手动复制
 ```bash
 # 1. 下载模板
-git clone https://github.com/your-repo/claude-continuity-template.git
-cd claude-continuity-template
+git clone https://github.com/davidww11/claude-code-session-continuity-template.git
+cd claude-code-session-continuity-template
 
 # 2. 复制到你的项目
 ./setup.sh /path/to/your/project
@@ -98,7 +98,7 @@ your-project/
 ### 1. 新项目初始化
 ```bash
 # 在新项目中设置会话连续性系统
-curl -fsSL [template-url]/deploy.sh | bash
+curl -fsSL https://raw.githubusercontent.com/davidww11/claude-code-session-continuity-template/main/deploy.sh | bash
 ./docs/customize.sh --type=web --level=standard
 git add . && git commit -m "feat: 添加Claude Code会话连续性系统"
 ```
@@ -190,8 +190,8 @@ SPECIFIC_FILES=$(git diff --cached --name-only | grep -E "(your-pattern)")
 
 ### 获取帮助
 - **文档**: [完整文档站点](https://claude-continuity-docs.com)
-- **问题报告**: [GitHub Issues](https://github.com/your-repo/claude-continuity-template/issues)
-- **讨论**: [GitHub Discussions](https://github.com/your-repo/claude-continuity-template/discussions)
+- **问题报告**: [GitHub Issues](https://github.com/davidww11/claude-code-session-continuity-template/issues)
+- **讨论**: [GitHub Discussions](https://github.com/davidww11/claude-code-session-continuity-template/discussions)
 
 ### 贡献指南
 - 提交项目类型模板
@@ -215,6 +215,6 @@ SPECIFIC_FILES=$(git diff --cached --name-only | grep -E "(your-pattern)")
 
 ---
 
-**开始使用**: 运行 `curl -fsSL [template-url]/deploy.sh | bash` 在你的项目中设置会话连续性系统
+**开始使用**: 运行 `curl -fsSL https://raw.githubusercontent.com/davidww11/claude-code-session-continuity-template/main/deploy.sh | bash` 在你的项目中设置会话连续性系统
 
 **需要帮助**: 查看 [完整文档](https://claude-continuity-docs.com) 或 [联系支持](mailto:support@example.com)
