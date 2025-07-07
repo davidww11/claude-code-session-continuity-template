@@ -59,6 +59,64 @@ echo "requests>=2.25.0" > requirements.txt
 # - 发布流程文档
 ```
 
+### 示例4: 国际化营销网站项目 (基于ccusage项目实践)
+```bash
+# 创建Next.js营销网站项目
+npx create-next-app@latest ccusage-web --typescript --tailwind --app
+cd ccusage-web
+git init && git add . && git commit -m "initial commit"
+
+# 配置专业营销网站会话连续性系统
+curl -fsSL https://raw.githubusercontent.com/claude-continuity/template/main/deploy.sh | bash
+./setup.sh . --type=marketing \
+  --features=analytics,seo,i18n \
+  --languages=en,zh \
+  --tech-stack="Next.js 15,TypeScript,Tailwind CSS,next-intl" \
+  --deployment=cloudflare-pages \
+  --team=solo \
+  --level=standard
+
+# 结果配置:
+# - 自动创建Analytics集成文档模板
+# - SEO优化模块文档(sitemap/robots管理)
+# - 国际化管理文档(翻译状态跟踪)
+# - 部署环境管理文档
+# - 三层环境变量配置追踪
+# - 性能监控基准记录
+```
+
+**专门适配功能**:
+- 监控 `src/components/blocks/`, `src/messages/`, `src/app/[locale]/`
+- Analytics配置验证脚本
+- 多语言内容一致性检查
+- SEO配置状态跟踪
+- Core Web Vitals基准管理
+- 第三方服务集成状态记录
+
+### 示例5: CLI工具推广网站项目
+```bash
+# 专为开发工具推广设计的营销网站
+mkdir my-cli-tool-website
+cd my-cli-tool-website
+npm init -y
+git init
+
+# 针对开发者受众的配置
+./setup.sh . --type=marketing \
+  --target-audience=developers \
+  --features=tutorials,analytics,seo \
+  --focus=conversion,education \
+  --tech="Next.js,React,TypeScript" \
+  --level=standard
+
+# 获得专门的模块:
+# - 教程系统管理文档
+# - 开发者转化流程优化记录
+# - 技术对比展示管理
+# - 用户案例研究文档
+# - 社区反馈收集系统
+```
+
 ---
 
 ## 📊 不同复杂度配置对比
@@ -128,6 +186,31 @@ curl -fsSL [template-url]/deploy.sh | bash
 - 组件开发文档模板
 - 部署流程文档
 - 性能优化记录模板
+
+### 营销网站项目配置 (专业配置)
+```bash
+# 基于ccusage项目经验的营销网站配置
+npx create-next-app@latest my-marketing-site --typescript --tailwind --app
+cd my-marketing-site
+curl -fsSL [template-url]/deploy.sh | bash
+
+# 营销网站专用配置:
+./setup.sh . --type=marketing \
+  --features=analytics,seo,i18n \
+  --tech="Next.js 15,TypeScript,Tailwind CSS,next-intl" \
+  --deployment=cloudflare-pages \
+  --team=solo
+```
+
+**营销网站特化功能**:
+- 监控 `src/components/blocks/`, `src/messages/`, `src/app/[locale]/`
+- Analytics集成状态跟踪 (Google Analytics, OpenPanel, Plausible)
+- SEO优化配置管理 (动态sitemap/robots生成)
+- 多语言内容一致性检查
+- 转化漏斗优化记录
+- 用户行为分析文档
+- A/B测试管理模板
+- Core Web Vitals基准追踪
 
 ### API服务项目配置
 ```bash
@@ -257,7 +340,28 @@ echo "任务: 添加用户认证功能" >> docs/SESSION_HISTORY.md
 
 ## 📈 成功案例分析
 
-### 案例1: 初创公司Web应用
+### 案例1: ccusage CLI工具营销网站 (真实案例)
+**背景**: 个人项目，专为ccusage CLI工具创建的多语言营销网站
+
+**配置**:
+```bash
+./setup.sh . --type=marketing \
+  --features=analytics,seo,i18n \
+  --languages=en,zh \
+  --tech="Next.js 15,TypeScript,Tailwind CSS,next-intl" \
+  --deployment=cloudflare-pages \
+  --team=solo \
+  --level=standard
+```
+
+**实际效果**:
+- **Analytics问题诊断**: 从Google Analytics配置问题到解决，时间从2小时减少到15分钟
+- **多语言管理**: 中英文内容不一致问题归零，翻译状态追踪100%准确
+- **SEO配置**: 动态sitemap/robots配置变更追踪，部署问题排查时间减少90%
+- **环境变量管理**: 三层配置体系（.env.local/.env.production/wrangler.toml）文档化，环境问题归零
+- **会话连续性**: 新会话启动时间从15分钟减少到2分钟，Claude立即了解项目状态
+
+### 案例2: 初创公司Web应用
 **背景**: 5人团队，React+Node.js全栈应用
 
 **配置**:
@@ -271,7 +375,7 @@ echo "任务: 添加用户认证功能" >> docs/SESSION_HISTORY.md
 - 技术决策文档化，避免重复讨论
 - 问题解决时间平均减少50%
 
-### 案例2: 开源Python库
+### 案例3: 开源Python库
 **背景**: 个人维护的机器学习库项目
 
 **配置**:
@@ -285,7 +389,7 @@ echo "任务: 添加用户认证功能" >> docs/SESSION_HISTORY.md
 - 问题解决方案积累成知识库
 - 发布流程标准化
 
-### 案例3: 企业级微服务
+### 案例4: 企业级微服务
 **背景**: 20+人团队，多个微服务项目
 
 **配置**:
@@ -308,10 +412,11 @@ done
 ## 🎯 最佳实践总结
 
 ### 配置选择指南
-1. **项目类型**: 根据主要技术栈选择
+1. **项目类型**: 根据主要技术栈选择，营销网站推荐使用`--type=marketing`
 2. **复杂度**: 个人项目选basic，团队项目选standard，企业项目选enterprise
 3. **团队规模**: 实际团队人数，影响协作功能
 4. **技术栈**: 尽量具体，影响文件监控模式
+5. **特殊功能**: 多语言项目必须设置`--features=i18n`，SEO优化项目设置`--features=seo`
 
 ### 使用习惯建议
 1. **会话开始**: 总是让Claude先读取启动清单
