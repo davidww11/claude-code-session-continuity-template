@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Claude Code 文档更新提醒
+# 在提交代码时自动检查和提醒更新相关文档
+
+echo "🤖 Claude Code 文档检查..."
+
+# 检查是否有重要文件修改
+IMPORTANT_FILES_CHANGED=$(git diff --cached --name-only | grep -E "({{IMPORTANT_FILE_PATTERNS}})")
+
+if [ ! -z "$IMPORTANT_FILES_CHANGED" ]; then
+    echo ""
+    echo "⚠️  检测到重要文件修改，请考虑更新以下文档："
+    echo ""
+    echo "📁 修改的文件："
+    echo "$IMPORTANT_FILES_CHANGED" | sed 's/^/   • /'
+    echo ""
+    echo "📋 建议更新的文档："
+    echo "   • docs/PROJECT_STATUS.md - 如果项目状态有变化"
+    echo "   • docs/SESSION_HISTORY.md - 记录本次会话的关键决策"
+    echo "   • docs/KNOWN_ISSUES.md - 如果修复了问题或发现新问题"
+    echo "   • CLAUDE.md - 如果架构有重大变更"
+    echo "   • docs/QUICK_REFERENCE.md - 如果有新的命令或模式"
+    echo ""
+    
+    # 检查文档是否在本次提交中
+    DOCS_UPDATED=$(git diff --cached --name-only | grep -E "(docs/|CLAUDE.md)")
+    
+    if [ -z "$DOCS_UPDATED" ]; then
+        echo "❓ 是否需要更新文档？"
+        echo "   输入 'y' 继续提交，'n' 取消提交并更新文档"
+        read -p "   选择 (y/n): " choice
+        
+        case "$choice" in
+            y|Y ) 
+                echo "✅ 继续提交，请记得稍后更新文档"
+                ;;
+            n|N ) 
+                echo "❌ 提交已取消，请更新相关文档后重新提交"
+                echo ""
+                echo "💡 快速更新提示："
+                echo "   1. 编辑 docs/SESSION_HISTORY.md 添加本次会话记录"
+                echo "   2. 更新 docs/PROJECT_STATUS.md 项目状态"
+                echo "   3. 检查 docs/KNOWN_ISSUES.md 是否需要更新"
+                echo "   4. 重新运行 git commit"
+                exit 1
+                ;;
+            * ) 
+                echo "❌ 无效选择，提交已取消"
+                exit 1
+                ;;
+        esac
+    else
+        echo "✅ 检测到文档更新，很好！"
+        echo "📄 更新的文档："
+        echo "$DOCS_UPDATED" | sed 's/^/   • /'
+    fi
+fi
+
+# 检查特定项目类型的文件
+{{PROJECT_SPECIFIC_CHECKS}}
+
+echo "🚀 文档检查完成，继续提交..."
+echo ""
